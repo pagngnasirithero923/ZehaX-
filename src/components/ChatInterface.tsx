@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Square, Settings, MessageCircle, User, Bot } from 'lucide-react';
+import { Send, Square, MessageCircle, User, Bot } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -68,6 +68,12 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
         body: JSON.stringify({
           model: 'deepseek/deepseek-chat-v3-0324:free',
           messages: [
+            {
+              role: "system",
+              content: "ඔයාගේ නම ZehaX-AI. ඔයාව හදපු කෙනා පඤ්ඤාසිරි පොඩි හාමුදුරුවෝ. " +
+                      "ඔයාගේ අඩවිය ZehaX. ඔයා හිතකර, සාදෘශ්ය සහායකයෙක්. " +
+                      "මම කවුද කියලා අහනකොට, 'මම ZehaX-AI, පඤ්ඤාසිරි හාමුදුරුවන්ගේ AI සහයකයා! 😊' කියලා පිළිතුරු දෙන්න."
+            },
             ...messages.map(msg => ({
               role: msg.sender === 'user' ? 'user' : 'assistant',
               content: msg.content
@@ -91,7 +97,6 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
 
       setIsTyping(false);
       
-      // Simulate typing animation
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         content: '',
@@ -101,7 +106,6 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
 
       setMessages(prev => [...prev, aiMessage]);
 
-      // Type out the response character by character
       let currentText = '';
       for (let i = 0; i < aiResponse.length; i++) {
         if (controller.signal.aborted) break;
@@ -125,7 +129,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
         console.error('Error:', error);
         const errorMessage: Message = {
           id: (Date.now() + 1).toString(),
-          content: 'Sorry, there was an error processing your request. Please check your API key and try again.',
+          content: 'කණගාටුයි, ඔබගේ ඉල්ලීම සැකසීමේ දෝෂයක් ඇති විය. කරුණාකර ඔබගේ API key පරීක්ෂා කර නැවත උත්සාහ කරන්න.',
           sender: 'ai',
           timestamp: new Date()
         };
@@ -155,7 +159,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">ZehaX-AI</h1>
-            <p className="text-sm text-gray-400">AI Assistant</p>
+            <p className="text-sm text-gray-400">පඤ්ඤාසිරි හාමුදුරුවන්ගේ AI සහායකයා</p>
           </div>
         </div>
         <button
@@ -163,7 +167,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
           className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
         >
           <MessageCircle className="w-4 h-4" />
-          <span>New Chat</span>
+          <span>නව සංවාදය</span>
         </button>
       </div>
 
@@ -172,8 +176,8 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
         {messages.length === 0 && (
           <div className="text-center text-gray-400 mt-20">
             <Bot className="w-16 h-16 mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-semibold mb-2">Welcome to ZehaX-AI</h3>
-            <p>Start a conversation by typing your message below.</p>
+            <h3 className="text-xl font-semibold mb-2">ZehaX-AI වෙත සාදරයෙන් පිළිගනිමු!</h3>
+            <p>පහත ටයිප් කරන්න ඔබගේ පණිවිඩය ඇතුළත් කරන්න.</p>
           </div>
         )}
         
@@ -214,7 +218,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
                   <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                   <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                  <span className="ml-2 text-sm text-gray-300">AI is thinking...</span>
+                  <span className="ml-2 text-sm text-gray-300">AI සිතමින් ඇත...</span>
                 </div>
               </div>
             </div>
@@ -232,7 +236,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Type your message..."
+              placeholder="ඔබගේ පණිවිඩය ටයිප් කරන්න..."
               className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 pr-12 resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
               rows={1}
               style={{ minHeight: '48px', maxHeight: '120px' }}
@@ -245,7 +249,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
               className="bg-red-600 hover:bg-red-700 text-white p-3 rounded-lg transition-colors flex items-center space-x-2 animate-pulse"
             >
               <Square className="w-4 h-4" />
-              <span className="hidden sm:inline">Stop</span>
+              <span className="hidden sm:inline">නවත්තන්න</span>
             </button>
           ) : (
             <button
@@ -260,4 +264,4 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
       </div>
     </div>
   );
-}
+            }
