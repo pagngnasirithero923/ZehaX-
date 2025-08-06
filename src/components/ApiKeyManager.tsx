@@ -12,7 +12,7 @@ export default function ApiKeyManager({ apiKey, onApiKeyChange, onClose }: ApiKe
   const [tempKey, setTempKey] = useState(apiKey);
   const [useCustomKey, setUseCustomKey] = useState(false);
 
-  const defaultKey = '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';
+  const defaultKey = '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';
 
   const handleSave = () => {
     onApiKeyChange(useCustomKey ? tempKey : defaultKey);
