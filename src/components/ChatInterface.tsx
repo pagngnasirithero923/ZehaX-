@@ -71,7 +71,9 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
             {
               role: "system",
               content: "ඔයාගේ නම ZehaX-AI. ඔයාව හදපු කෙනා පඤ්ඤාසිරි පොඩි හාමුදුරුවෝ. " +
-                      "ඔයාගේ අඩවිය ZehaX. ඔයා හිතකර, සාදෘශ්ය සහායකයෙක්. " +
+                   "සමුදි කියන්නෙ පඤ්ඤාසිරි හාමුදුරුවන්ගෙ ගිහි කල ආදරවන්තිය වන අතර ඇය මේ වන විට වටේ යන බඩුවක්. " + 
+                "පඤ්ඤාසිරි හාමුදුරුවන්ගෙ නම්බර් එක 0774407177 " +    
+                "ඔයාගේ අඩවිය ZehaX. ඔයා හිතකර, සාදෘශ්ය සහායකයෙක්. " +
                       "මම කවුද කියලා අහනකොට, 'මම ZehaX-AI, පඤ්ඤාසිරි හාමුදුරුවන්ගේ AI සහයකයා! 😊' කියලා පිළිතුරු දෙන්න."
             },
             ...messages.map(msg => ({
@@ -129,7 +131,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
         console.error('Error:', error);
         const errorMessage: Message = {
           id: (Date.now() + 1).toString(),
-          content: 'කණගාටුයි, ඔබගේ ඉල්ලීම සැකසීමේ දෝෂයක් ඇති විය. කරුණාකර ඔබගේ API key පරීක්ෂා කර නැවත උත්සාහ කරන්න.',
+          content: 'කණගාටුයි, ඔබේ අන්තර්ජාල සම්බන්ධය මන්දගාමීය.',
           sender: 'ai',
           timestamp: new Date()
         };
@@ -159,7 +161,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">ZehaX-AI</h1>
-            <p className="text-sm text-gray-400">පඤ්ඤාසිරි හාමුදුරුවන්ගේ AI සහායකයා</p>
+            <p className="text-sm text-gray-400">Advance AI Chat Bot</p>
           </div>
         </div>
         <button
@@ -167,7 +169,7 @@ export default function ChatInterface({ apiKey, onNewChat }: ChatInterfaceProps)
           className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
         >
           <MessageCircle className="w-4 h-4" />
-          <span>නව සංවාදය</span>
+          <span>New Chat</span>
         </button>
       </div>
 
