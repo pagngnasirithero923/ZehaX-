@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Settings, Info, X } from 'lucide-react';
+import { Info, X } from 'lucide-react';
 import ChatInterface from './components/ChatInterface';
-import ApiKeyManager from './components/ApiKeyManager';
 import AboutSection from './components/AboutSection';
 
 function App() {
   const [apiKey, setApiKey] = useState('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');
-  const [showApiManager, setShowApiManager] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [chatKey, setChatKey] = useState(0); // For resetting chat
 
@@ -40,13 +38,6 @@ function App() {
               >
                 <Info className="w-5 h-5" />
               </button>
-              <button
-                onClick={() => setShowApiManager(true)}
-                className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-700 transition-colors"
-                title="API Settings"
-              >
-                <Settings className="w-5 h-5" />
-              </button>
             </div>
           </div>
         </nav>
@@ -69,14 +60,6 @@ function App() {
       </div>
 
       {/* Modals */}
-      {showApiManager && (
-        <ApiKeyManager
-          apiKey={apiKey}
-          onApiKeyChange={setApiKey}
-          onClose={() => setShowApiManager(false)}
-        />
-      )}
-
       {showAbout && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-gray-800 rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
