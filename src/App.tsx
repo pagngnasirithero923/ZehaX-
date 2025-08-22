@@ -4,7 +4,7 @@ import ChatInterface from './components/ChatInterface';
 import AboutSection from './components/AboutSection';
 
 function App() {
-  const [apiKey, setApiKey] = useState('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');
+  const [apiKey, setApiKey] = useState('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');
   const [showApiManager, setShowApiManager] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [chatKey, setChatKey] = useState(0); // For resetting chat
