@@ -63,7 +63,7 @@ function App() {
         {/* Footer */}
         <footer className="bg-gray-900/80 backdrop-blur-sm border-t border-gray-700 p-3">
           <div className="text-center text-sm text-gray-400">
-            <p>© 2025 ZehaX-AI - Built with ❤️ by a 17-year-old developer | developer by Rev.Pagngnasiri Threo </p>
+            <p>© 2025 ZehaX-AI - Pagngnasiri Thero</p>
           </div>
         </footer>
       </div>
