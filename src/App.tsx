@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Settings, Info, X } from 'lucide-react';
+import { Info, X } from 'lucide-react';
 import ChatInterface from './components/ChatInterface';
-import ApiKeyManager from './components/ApiKeyManager';
 import AboutSection from './components/AboutSection';
 
 function App() {
